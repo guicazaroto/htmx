@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POST HTMX</title>
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+    <!-- form with tailwind  -->
+    <form hx-post="/users" hx-trigger="submit" hx-target="#users" class="flex flex-col items-center">
+        <input type="text" name="name" placeholder="Name" class="border-2 border-gray-300 p-2 m-2 rounded-lg">
+        <input type="text" name="email" placeholder="Email" class="border-2 border-gray-300 p-2 m-2 rounded-lg">
+        <button type="submit" class="bg-blue-500 text-white py-2 px-3 my-5 rounded-lg">Submit</button>
+    </form>
+
+    <!-- container -->
+    <div id="users" class="text-center"></div>
+</body>
+</html>

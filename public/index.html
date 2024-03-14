@@ -12,11 +12,16 @@
     <h1 class="text-2xl font-bold my-5">
       HTMX Example
     </h1>
+
+    <!-- CONTAINER -->
     <div id="users"></div>
+
+    <!-- LOADING -->
     <div id="loading" class="htmx-indicator">
       Loading...
     </div>
 
+    <!-- ACTIONS -->
     <button 
       hx-get="/users"
       hx-trigger="click"
@@ -40,5 +45,22 @@
   </button>
   </div>
   
+
+  <!-- INTERCEPTORS -->
+  <script>
+    document.body.addEventListener('htmx:afterRequest', function(event) {
+    if (event.detail.pathInfo.requestPath === '/users/async') {
+        const data = JSON.parse(event.detail.xhr.response);
+        const container = document.querySelector('#users');
+
+        let html = '<ul>';
+        data.forEach(function(user) {
+            html += `<li class="text-red-500">${user.name}</li>`;
+        });
+        html += '</ul>';
+          container.innerHTML = html;
+        }
+    });
+  </script>
 </body>
 </html>

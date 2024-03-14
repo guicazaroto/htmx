@@ -47,6 +47,11 @@ app.get('/users/async', (req, res) => {
   }, 2000);
 })
 
+app.post('/users', (req, res) => {
+  const { name, email } = req.body;
+  res.send(`User ${name} with email ${email} has been added`);
+})
+
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 })
