@@ -13,7 +13,10 @@
       HTMX Example
     </h1>
     <div id="users"></div>
-    
+    <div id="loading" class="htmx-indicator">
+      Loading...
+    </div>
+
     <button 
       hx-get="/users"
       hx-trigger="click"
@@ -23,6 +26,18 @@
     >
       Get Users
     </button>
+
+    <br>
+    <button   
+      hx-get="/users/async"
+      hx-trigger="click"
+      hx-target="#users"
+      hx-indicator="#loading"
+      hx-vals='{"limit": 3 }'    
+      class="bg-orange-500 text-white py2 px-3 my-5 rounded-lg"
+    >
+    Get async users
+  </button>
   </div>
   
 </body>
