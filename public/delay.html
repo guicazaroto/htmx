@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DELAY HTMX</title>
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-blue-900 text-white flex items-center justify-center min-h-screen">
+  <form>
+    <label class="label" for="search">Search</label>
+    <input 
+      class="p-2 rounded-lg text-black"
+      type="text" 
+      name="search" 
+      hx-post="/search"
+      hx-trigger="input chaged delay:500ms, search" 
+      hx-target="#results"
+    >
+    <div id="results" class="mt-4 text-white"></div>
+  </form>
+</body>
+</html>

@@ -52,6 +52,19 @@ app.post('/users', (req, res) => {
   res.send(`User ${name} with email ${email} has been added`);
 })
 
+
+let count = 0;
+
+app.get('/poll', (req, res) => {
+  
+  res.send(count.toString());
+  count++
+})
+
+app.post('/search', (req, res) => {
+  res.send(`Search results for: ${req.body.search}`);
+})
+
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 })
